@@ -2,6 +2,7 @@ import datetime
 
 from aiogram import Router, Bot, F
 from aiogram.filters import CommandStart, Command
+from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, Callback
 
 import app.keyboards.reply as rkb
