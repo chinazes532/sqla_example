@@ -3,7 +3,7 @@ import datetime
 from aiogram import Router, Bot, F
 from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, Callback
+from aiogram.types import Message, CallbackQuery
 
 import app.keyboards.reply as rkb
 import app.keyboards.inline as ikb
