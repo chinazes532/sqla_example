@@ -22,7 +22,7 @@ async def check_sub(callback: CallbackQuery):
     
     await callback.message.edit_text("Спасибо за подписку, вы можете пользоваться ботом!")
 
-    await set_user(message.from_user.id, message.from_user.full_name, current_date)
+    await set_user(callback.from_user.id, callback.from_user.full_name, current_date)
 
 
 @user.message(CommandStart())
