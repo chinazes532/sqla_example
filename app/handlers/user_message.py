@@ -16,6 +16,15 @@ from app.database.requests.user.add import set_user
 user = Router()
 
 
+@user.callback_query(F.data == "check_sub")
+async def check_sub(callback: CallbackQuery):
+    current_date = datetime.datetime.now().strftime("%d.%m.%Y")
+    
+    await callback.message.edit_text("Спасибо за подписку, вы можете пользоваться ботом!")
+
+    await set_user(message.from_user.id, message.from_user.full_name, current_date)
+
+
 @user.message(CommandStart())
 async def start_command(message: Message):
     admin = AdminProtect()
