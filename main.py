@@ -4,6 +4,7 @@ import sys
 
 from aiogram import Bot, Dispatcher
 
+from app.filters.check_sub import CheckSubscription, CheckSubscriptionCallback
 from config import BOT_TOKEN
 
 from app.handlers.user_message import user
@@ -19,6 +20,9 @@ async def main():
 
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
+
+    dp.message.middleware(CheckSubscription())
+    dp.callback_query.middleware(CheckSubscriptionCallback())
 
     dp.include_router(user)
     dp.include_router(admin)
