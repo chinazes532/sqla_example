@@ -5,9 +5,12 @@ import sys
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+from aiogram.fsm.storage.redis import RedisStorage
+
+import redis.asyncio as aioredis
 
 from app.filters.check_sub import CheckSubscription, CheckSubscriptionCallback
-from config import BOT_TOKEN
+from config import BOT_TOKEN, REDIS_URL
 
 from app.handlers.user_message import user
 from app.handlers.admin_message import admin
@@ -18,11 +21,12 @@ from app.database.models import create_db
 async def main():
     print("Bot is starting...")
 
+    redis = await aioredis.from_url(REDIS_URL)
     await create_db()
 
     bot = Bot(token=BOT_TOKEN,
               default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    dp = Dispatcher()
+    dp = Dispatcher(storage=RedisStorage(redis))
 
     dp.message.middleware(CheckSubscription())
     dp.callback_query.middleware(CheckSubscriptionCallback())
