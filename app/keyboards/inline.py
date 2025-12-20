@@ -4,7 +4,14 @@ from config import config
 
 admin_panel = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="Текст 1", callback_data="text_1")],
+        [InlineKeyboardButton(text="Рассылка", callback_data="sender")],
+        [InlineKeyboardButton(text="Администраторы", callback_data="admins")],
+    ]
+)
+
+admin_cancel = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="🔙 Назад", callback_data="back")]
     ]
 )
 

@@ -1,5 +1,9 @@
 from aiogram.fsm.state import State, StatesGroup
 
 
-class States(StatesGroup):
-    main = State()
+class AddAdmin(StatesGroup):
+    tg_id = State()
+
+
+class SendAll(StatesGroup):
+    text = State()

@@ -25,6 +25,13 @@ class User(Base):
     tg_id: Mapped[int] = mapped_column(BigInteger)
     first_name: Mapped[str]
     date: Mapped[str]
+
+
+class Admin(Base):
+    __tablename__ = 'admins'
+
+    id: Mapped[intpk]
+    tg_id: Mapped[int] = mapped_column(BigInteger)
   
 
 async def create_db():
