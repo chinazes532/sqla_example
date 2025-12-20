@@ -11,6 +11,7 @@ from aiogram.fsm.storage.redis import RedisStorage
 import redis.asyncio as aioredis
 
 from app.filters.check_sub import CheckSubscription, CheckSubscriptionCallback
+from app.filters.admin_filter import AdminProtect
 from config import config
 
 from app.handlers.user_message import user
@@ -31,6 +32,9 @@ async def main():
 
     # dp.message.middleware(CheckSubscription())
     # dp.callback_query.middleware(CheckSubscriptionCallback())
+
+    admin.message.middleware(AdminProtect())
+    admin.callback_query.middleware(AdminProtect())
 
     dp.include_router(user)
     dp.include_router(admin)
