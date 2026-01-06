@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_
 
 from config import config
 
-engine = create_async_engine(url=config.database.database_url,
+engine = create_async_engine(url=config.database.sqlalchemy_url(),
                              echo=True)
 
 async_session = async_sessionmaker(engine)
@@ -32,7 +32,7 @@ class Admin(Base):
 
     id: Mapped[intpk]
     tg_id: Mapped[int] = mapped_column(BigInteger)
-  
+
 
 async def create_db():
     async with engine.begin() as conn:

@@ -20,7 +20,7 @@ if cfg.config_file_name is not None:
     fileConfig(cfg.config_file_name)
 
 
-cfg.set_main_option("sqlalchemy.url", config.database.database_url)
+cfg.set_main_option("sqlalchemy.url", config.database.sqlalchemy_url())
 
 # add your model's MetaData object here
 # for 'autogenerate' support
