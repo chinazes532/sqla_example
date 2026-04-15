@@ -23,7 +23,7 @@ class User(Base):
 
     id: Mapped[intpk]
     tg_id: Mapped[int] = mapped_column(BigInteger)
-    first_name: Mapped[str]
+    first_name: Mapped[str] = mapped_column(String)
     date: Mapped[str]
 
 
