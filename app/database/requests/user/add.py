@@ -3,12 +3,11 @@ from app.database.models import User
 from sqlalchemy import select
 
 
-async def set_user(tg_id, first_name, date):
+async def set_user(tg_id: int, first_name: str):
     async with async_session() as session:
         user = await session.scalar(select(User).where(User.tg_id == tg_id))
 
         if not user:
             session.add(User(tg_id=tg_id,
-                             first_name=first_name,
-                             date=date))
+                             first_name=first_name))
             await session.commit()

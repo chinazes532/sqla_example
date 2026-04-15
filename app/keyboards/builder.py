@@ -18,7 +18,7 @@ async def admins_cb():
     return kb.as_markup()
 
 
-async def edit_admin(id):
+async def edit_admin(id: int):
     kb = InlineKeyboardBuilder()
 
     kb.row(InlineKeyboardButton(text="❌ Удалить", callback_data=f"deleteadmin_{id}"))

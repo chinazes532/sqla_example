@@ -1,6 +1,7 @@
 from typing import Annotated
+from datetime import datetime
 
-from sqlalchemy import ForeignKey, String, BigInteger
+from sqlalchemy import ForeignKey, String, BigInteger, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship
 from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine
 
@@ -24,7 +25,7 @@ class User(Base):
     id: Mapped[intpk]
     tg_id: Mapped[int] = mapped_column(BigInteger)
     first_name: Mapped[str] = mapped_column(String)
-    date: Mapped[str]
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
 
 
 class Admin(Base):
