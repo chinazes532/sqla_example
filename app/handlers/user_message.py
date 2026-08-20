@@ -15,7 +15,9 @@ user = Router()
 
 @user.callback_query(F.data == "check_sub")
 async def check_sub(callback: CallbackQuery):
-    await callback.message.edit_text("Спасибо за подписку, вы можете пользоваться ботом!")
+    await callback.message.edit_text(
+        "Спасибо за подписку, вы можете пользоваться ботом!"
+    )
 
     await set_user(callback.from_user.id, callback.from_user.full_name)
 
@@ -30,7 +32,8 @@ async def start_command(message: Message):
 
     for admin in admins:
         if admin.tg_id == message.from_user.id:
-            await message.answer(f"Вы успешно авторизовались как администратор!",
-                                 reply_markup=rkb.admin_menu)
+            await message.answer(
+                f"Вы успешно авторизовались как администратор!",
+                reply_markup=rkb.admin_menu,
+            )
             return
-

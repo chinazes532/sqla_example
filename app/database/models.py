@@ -7,8 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_
 
 from config import config
 
-engine = create_async_engine(url=config.database.sqlalchemy_url(),
-                             echo=True)
+engine = create_async_engine(url=config.database.sqlalchemy_url(), echo=True)
 
 async_session = async_sessionmaker(engine)
 
@@ -20,7 +19,7 @@ class Base(AsyncAttrs, DeclarativeBase):
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id: Mapped[intpk]
     tg_id: Mapped[int] = mapped_column(BigInteger)
@@ -29,7 +28,7 @@ class User(Base):
 
 
 class Admin(Base):
-    __tablename__ = 'admins'
+    __tablename__ = "admins"
 
     id: Mapped[intpk]
     tg_id: Mapped[int] = mapped_column(BigInteger)

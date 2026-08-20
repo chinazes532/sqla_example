@@ -30,13 +30,11 @@ async def get_statistics():
 
     async with async_session() as session:
         daily_users = await session.scalar(
-            select(func.count(User.id))
-            .where(User.created_at >= today_start)
+            select(func.count(User.id)).where(User.created_at >= today_start)
         )
 
         monthly_users = await session.scalar(
-            select(func.count(User.id))
-            .where(User.created_at >= start_of_month)
+            select(func.count(User.id)).where(User.created_at >= start_of_month)
         )
 
         total_users = await session.scalar(select(func.count(User.id)))

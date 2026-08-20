@@ -10,14 +10,12 @@ admin_panel = InlineKeyboardMarkup(
 )
 
 admin_cancel = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="🔙 Назад", callback_data="back")]
-    ]
+    inline_keyboard=[[InlineKeyboardButton(text="🔙 Назад", callback_data="back")]]
 )
 
 check_sub = InlineKeyboardMarkup(
     inline_keyboard=[
         [InlineKeyboardButton(text="Подписаться", url=config.bot.channel_link)],
-        [InlineKeyboardButton(text="Проверить подписку", callback_data="check_sub")]
+        [InlineKeyboardButton(text="Проверить подписку", callback_data="check_sub")],
     ]
 )
